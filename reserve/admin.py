@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Restaurant, Order, Table
+from .models import Restaurant, Order, Table, Dish, Comment
 
 
 class RestaurantAdmin(admin.ModelAdmin):
@@ -26,3 +26,19 @@ class TableAdmin(admin.ModelAdmin):
 admin.site.register(Table, TableAdmin)
 
 
+class DishAdmin(admin.ModelAdmin):
+    list_display = ('id', 'title', 'description','weight', 'price')
+    list_display_links = ('id', 'title', 'description','weight', 'price')
+    search_fields = ('id', 'title', 'description')
+
+
+admin.site.register(Dish, DishAdmin)
+
+
+class CommentAdmin(admin.ModelAdmin):
+    list_display = ('id', 'clientName', 'content','dish')
+    list_display_links = ('id', 'clientName', 'content','dish')
+    search_fields = ('id', 'clientName', 'content')
+
+
+admin.site.register(Comment, CommentAdmin)

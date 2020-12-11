@@ -1,7 +1,6 @@
-from .models import Restaurant, Order, Table
+from .models import Restaurant, Order, Table, Dish, Comment
 from rest_framework import viewsets,permissions
-from .serializers import RestaurantSerializer, OrderSerializer, TableSerializer
-
+from .serializers import RestaurantSerializer, OrderSerializer, TableSerializer, DishSerializer, CommentSerializer
 
 class RestaurantViewSet(viewsets.ModelViewSet):
     queryset = Restaurant.objects.all()
@@ -26,3 +25,18 @@ class TableViewSet(viewsets.ModelViewSet):
     ]
     serializer_class = TableSerializer
 
+
+class DishViewSet(viewsets.ModelViewSet):
+    queryset = Dish.objects.all()
+    permission_classes = [
+        permissions.AllowAny
+    ]
+    serializer_class = DishSerializer
+
+
+class CommentViewSet(viewsets.ModelViewSet):
+    queryset = Comment.objects.all()
+    permission_classes = [
+        permissions.AllowAny
+    ]
+    serializer_class = CommentSerializer

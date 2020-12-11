@@ -26,6 +26,17 @@ class Table(models.Model):
     number = models.IntegerField(default=1)
     quantityPlaces = models.IntegerField(default=1)
 
-    # def __str__(self):
-    #     return self.quantityPlaces
+
+class Dish(models.Model):
+    title = models.CharField(max_length=150)
+    description = models.CharField(max_length=400)
+    weight = models.IntegerField(default=50)
+    price = models.IntegerField(default=50)
+
+
+
+class Comment(models.Model):
+    clientName = models.CharField(max_length=150)
+    content = models.CharField(max_length=400)
+    dish = models.ForeignKey('Dish', on_delete=models.DO_NOTHING, default=1)
 
