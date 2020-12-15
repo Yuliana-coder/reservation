@@ -3,7 +3,7 @@ from django.db import models
 
 class Restaurant(models.Model):
     title = models.CharField(max_length=150)
-    description = models.CharField(max_length=550)
+    description = models.CharField(max_length=1000)
     address = models.CharField(max_length=200)
 
 
@@ -40,3 +40,19 @@ class Comment(models.Model):
     content = models.CharField(max_length=400)
     dish = models.ForeignKey('Dish', on_delete=models.DO_NOTHING, default=1)
 
+
+class JobVacancy(models.Model):
+    name = models.CharField(max_length=150)
+    description = models.CharField(max_length=800)
+    salary = models.IntegerField(default=20000)
+    duties = models.CharField(max_length=400)
+    demands = models.CharField(max_length=400)
+
+
+class JobApplication(models.Model):
+    name = models.CharField(max_length=150)
+    surname = models.CharField(max_length=150)
+    patronymic = models.CharField(max_length=150)
+    email = models.EmailField(max_length=254, null=True)
+    phonenumber = models.CharField(max_length=15)
+    vacancy = models.ForeignKey('JobVacancy', on_delete=models.DO_NOTHING, default=1)

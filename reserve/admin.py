@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Restaurant, Order, Table, Dish, Comment
+from .models import Restaurant, Order, Table, Dish, Comment, JobVacancy, JobApplication
 
 
 class RestaurantAdmin(admin.ModelAdmin):
@@ -42,3 +42,21 @@ class CommentAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Comment, CommentAdmin)
+
+
+class JobVacancyAdmin(admin.ModelAdmin):
+    list_display = ('id', 'name', 'description', 'salary','duties', 'demands')
+    list_display_links = ('id', 'name', 'description', 'salary','duties', 'demands')
+    search_fields = ('id', 'name', 'description')
+
+
+admin.site.register(JobVacancy, JobVacancyAdmin)
+
+
+class JobApplicationAdmin(admin.ModelAdmin):
+    list_display = ('id', 'name', 'surname', 'patronymic','email', 'phonenumber', 'vacancy')
+    list_display_links = ('id', 'name', 'surname', 'patronymic','email', 'phonenumber', 'vacancy')
+    search_fields = ('id', 'name', 'surname', 'patronymic')
+
+
+admin.site.register(JobApplication, JobApplicationAdmin)

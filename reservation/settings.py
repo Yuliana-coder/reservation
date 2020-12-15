@@ -27,7 +27,8 @@ SECRET_KEY = 'shg#(=&+$%!8_jdmm8p*(61y@r*6a2+n205e2y)2=skelm8t!a'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+]
 
 
 # Application definition
@@ -131,6 +132,7 @@ STATIC_URL = '/static/'
 CORS_ORIGIN_WHITELIST = [
     'http://localhost:8080',
     'http://127.0.0.1:8000',
+    'http://127.0.0.1:8080'
 ]
 
 CORS_ORIGIN_ALLOW_ALL = True
