@@ -16,6 +16,8 @@ class Order(models.Model):
     orderDate = models.DateField(auto_now_add=True)
     orderTime = models.TimeField()
     numberTable = models.IntegerField(default=1)
+    dishList = models.ManyToManyField('Dish', verbose_name='dishList', null=True)
+    quantityArray = models.CharField(max_length=700, null=True)
 
 
     def __str__(self):
@@ -32,6 +34,7 @@ class Dish(models.Model):
     description = models.CharField(max_length=400)
     weight = models.IntegerField(default=50)
     price = models.IntegerField(default=50)
+
 
 
 
