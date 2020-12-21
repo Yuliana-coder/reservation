@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Restaurant, Order, Table, Dish, Comment, JobVacancy, JobApplication
+from .models import Restaurant, Order, Table, Dish, Comment, JobVacancy, JobApplication, New
 
 
 class RestaurantAdmin(admin.ModelAdmin):
@@ -60,3 +60,12 @@ class JobApplicationAdmin(admin.ModelAdmin):
 
 
 admin.site.register(JobApplication, JobApplicationAdmin)
+
+
+class NewAdmin(admin.ModelAdmin):
+    list_display = ('id', 'title', 'articleTopic', 'description','datePublication')
+    list_display_links = ('id', 'title')
+    search_fields = ('id', 'title', 'description')
+
+
+admin.site.register(New, NewAdmin)

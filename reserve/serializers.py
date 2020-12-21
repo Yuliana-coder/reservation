@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Restaurant, Order, Table, Dish, Comment, JobVacancy, JobApplication
+from .models import Restaurant, Order, Table, Dish, Comment, JobVacancy, JobApplication, New
 
 
 class RestaurantSerializer(serializers.ModelSerializer):
@@ -41,4 +41,10 @@ class JobVacancySerializer(serializers.ModelSerializer):
 class JobApplicationSerializer(serializers.ModelSerializer):
     class Meta:
         model = JobApplication
+        fields = '__all__'
+
+
+class NewSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = New
         fields = '__all__'

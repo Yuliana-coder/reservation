@@ -36,8 +36,6 @@ class Dish(models.Model):
     price = models.IntegerField(default=50)
 
 
-
-
 class Comment(models.Model):
     clientName = models.CharField(max_length=150)
     content = models.CharField(max_length=400)
@@ -59,3 +57,14 @@ class JobApplication(models.Model):
     email = models.EmailField(max_length=254, null=True)
     phonenumber = models.CharField(max_length=15)
     vacancy = models.ForeignKey('JobVacancy', on_delete=models.DO_NOTHING, default=1)
+
+
+class New(models.Model):
+    title = models.CharField(max_length=150)
+    articleTopic = models.CharField(max_length=100)
+    description = models.CharField(max_length=800)
+    datePublication = models.DateField(auto_now_add=True)
+
+
+    def __str__(self):
+        return self.title

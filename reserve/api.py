@@ -1,7 +1,7 @@
-from .models import Restaurant, Order, Table, Dish, Comment, JobVacancy, JobApplication
+from .models import Restaurant, Order, Table, Dish, Comment, JobVacancy, JobApplication, New
 from rest_framework import viewsets,permissions
 from .serializers import RestaurantSerializer, OrderSerializer, TableSerializer, DishSerializer,\
- CommentSerializer, JobVacancySerializer, JobApplicationSerializer
+ CommentSerializer, JobVacancySerializer, JobApplicationSerializer, NewSerializer
 
 
 class RestaurantViewSet(viewsets.ModelViewSet):
@@ -58,3 +58,11 @@ class JobApplicationViewSet(viewsets.ModelViewSet):
         permissions.AllowAny
     ]
     serializer_class = JobApplicationSerializer
+
+
+class NewViewSet(viewsets.ModelViewSet):
+    queryset = New.objects.all()
+    permission_classes = [
+        permissions.AllowAny
+    ]
+    serializer_class = NewSerializer
