@@ -68,3 +68,30 @@ class New(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Responsible(models.Model):
+    name = models.CharField(max_length=100)
+    post = models.CharField(max_length=200)
+
+    def __str__(self):
+        return f'{self.post}, {self.name}'
+
+
+class PetitionReason(models.Model):
+    description = models.CharField(max_length=200)
+    responsible = models.ForeignKey('Responsible', on_delete=models.DO_NOTHING, default=1)
+
+    def __str__(self):
+        return self.description
+
+
+class Appeal(models.Model):
+    clientName = models.CharField(max_length=150)
+    petitionReason = models.ForeignKey('PetitionReason', on_delete=models.DO_NOTHING, default=1)
+    description = models.CharField(max_length=1500, null=True)
+    email = models.EmailField(max_length=254, null=True, blank=True)
+    phonenumber = models.CharField(max_length=15, null=True, blank=True)
+
+    def __str__(self):
+        return self.clientName

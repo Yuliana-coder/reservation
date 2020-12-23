@@ -1,5 +1,6 @@
 from rest_framework import serializers
-from .models import Restaurant, Order, Table, Dish, Comment, JobVacancy, JobApplication, New
+from .models import Restaurant, Order, Table, Dish, Comment, JobVacancy, JobApplication, New, Responsible,\
+    PetitionReason, Appeal
 
 
 class RestaurantSerializer(serializers.ModelSerializer):
@@ -47,4 +48,22 @@ class JobApplicationSerializer(serializers.ModelSerializer):
 class NewSerializer(serializers.ModelSerializer):
     class Meta:
         model = New
+        fields = '__all__'
+
+
+class ResponsibleSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Responsible
+        fields = '__all__'
+
+
+class PetitionReasonSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = PetitionReason
+        fields = '__all__'
+
+
+class AppealSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Appeal
         fields = '__all__'

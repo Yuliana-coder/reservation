@@ -1,5 +1,6 @@
 from django.contrib import admin
-from .models import Restaurant, Order, Table, Dish, Comment, JobVacancy, JobApplication, New
+from .models import Restaurant, Order, Table, Dish, Comment, JobVacancy, JobApplication, New, Responsible, \
+    PetitionReason, Appeal
 
 
 class RestaurantAdmin(admin.ModelAdmin):
@@ -69,3 +70,33 @@ class NewAdmin(admin.ModelAdmin):
 
 
 admin.site.register(New, NewAdmin)
+
+
+class ResponsibleAdmin(admin.ModelAdmin):
+    list_display = ('id', 'name', 'post')
+    list_display_links = ('id', 'name', 'post')
+    search_fields = ('id', 'name', 'post')
+
+
+admin.site.register(Responsible, ResponsibleAdmin)
+
+
+class PetitionReasonAdmin(admin.ModelAdmin):
+    list_display = ('id', 'description', 'responsible')
+    list_display_links = ('id', 'description', 'responsible')
+    search_fields = ('id', 'description', 'responsible')
+
+
+admin.site.register(PetitionReason, PetitionReasonAdmin)
+
+
+class AppealAdmin(admin.ModelAdmin):
+    list_display = ('id', 'clientName', 'petitionReason', 'description')
+    list_display_links = ('id', 'clientName', 'petitionReason')
+    search_fields = ('id', 'clientName', 'petitionReason')
+
+
+admin.site.register(Appeal, AppealAdmin)
+
+
+

@@ -1,7 +1,9 @@
-from .models import Restaurant, Order, Table, Dish, Comment, JobVacancy, JobApplication, New
+from .models import Restaurant, Order, Table, Dish, Comment, JobVacancy, JobApplication, New, Responsible,\
+    PetitionReason, Appeal
 from rest_framework import viewsets,permissions
 from .serializers import RestaurantSerializer, OrderSerializer, TableSerializer, DishSerializer,\
- CommentSerializer, JobVacancySerializer, JobApplicationSerializer, NewSerializer
+ CommentSerializer, JobVacancySerializer, JobApplicationSerializer, NewSerializer, ResponsibleSerializer, \
+    PetitionReasonSerializer, AppealSerializer
 
 
 class RestaurantViewSet(viewsets.ModelViewSet):
@@ -66,3 +68,27 @@ class NewViewSet(viewsets.ModelViewSet):
         permissions.AllowAny
     ]
     serializer_class = NewSerializer
+
+
+class ResponsibleViewSet(viewsets.ModelViewSet):
+    queryset = Responsible.objects.all()
+    permission_classes = [
+        permissions.AllowAny
+    ]
+    serializer_class = ResponsibleSerializer
+
+
+class PetitionReasonViewSet(viewsets.ModelViewSet):
+    queryset = PetitionReason.objects.all()
+    permission_classes = [
+        permissions.AllowAny
+    ]
+    serializer_class = PetitionReasonSerializer
+
+
+class AppealViewSet(viewsets.ModelViewSet):
+    queryset = Appeal.objects.all()
+    permission_classes = [
+        permissions.AllowAny
+    ]
+    serializer_class = AppealSerializer
